@@ -1,0 +1,764 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>夏和</title>
+
+	<!--
+    <script src="js/Element.js"></script>
+	
+    <script src="js/Websocket/UsdttwdWebsocket.js"></script>
+	
+    <script src="js/Model.js"></script>
+	-->
+	
+    <!-- jQuery -->
+    <script src="js/jquery.min.js"></script>
+    <!-- jQuery Easing -->
+    <script src="js/jquery.easing.1.3.js"></script>
+    <!-- Bootstrap -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Waypoints -->
+    <script src="js/jquery.waypoints.min.js"></script>
+    <!-- Carousel -->
+    <script src="js/owl.carousel.min.js"></script>
+    <!-- countTo -->
+    <script src="js/jquery.countTo.js"></script>
+    <!-- Flexslider -->
+    <script src="js/jquery.flexslider-min.js"></script>
+    <!-- Magnific Popup -->
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/magnific-popup-options.js"></script>
+    <!-- Main -->
+    <script src="js/main.js"></script>
+
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Facebook and Twitter integration -->
+    <meta property="og:title" content="" />
+    <meta property="og:image" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:site_name" content="" />
+    <meta property="og:description" content="" />
+    <meta name="twitter:title" content="" />
+    <meta name="twitter:image" content="" />
+    <meta name="twitter:url" content="" />
+    <meta name="twitter:card" content="" />
+
+
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- Icomoon Icon Fonts-->
+    <link rel="stylesheet" href="css/icomoon.css">
+    <!-- Themify Icons-->
+    <link rel="stylesheet" href="css/themify-icons.css">
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <!-- Magnific Popup -->
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <!-- Owl Carousel  -->
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <!-- Flexslider -->
+    <link rel="stylesheet" href="css/flexslider.css">
+    <!-- Theme style  -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Modernizr JS -->
+    <script src="js/modernizr-2.6.2.min.js"></script>
+    <!-- FOR IE9 below -->
+    <!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+    <script>
+        function to_login() {
+            window.location.href = 'login.aspx';
+        }
+    </script>
+</head>
+<body style='color: black'>
+    <form id="form1" runat="server">
+        <!-- The Modal -->
+        <div id="myModal" class="modal" style="width: 100%; height: 100%; top: 0%; left: 0%">
+            <span class="close" style="color: white;">&times;</span>
+            <img class="modal-content" style="" id="img01">
+            <div id="caption">
+                <h2 id="caption_h2" style="color: #ff5126;">服務項目</h2>
+                <p id="caption_p" style="color: white;">
+                </p>
+                <p id="caption_a"><a href="https://line.me/R/ti/p/%40anz4974i" target="_blank" class="btn btn-primary btn-lg">我要購買</a></p>
+
+            </div>
+        </div>
+
+        <div class="gtco-loader"></div>
+
+        <div id="page">
+            <nav class="gtco-nav" role="navigation">
+                <div class="gtco-container">
+                    <div style="float: left; width: 160px; height: 50px;">
+					
+                    </div>
+                    <div class="row" style="float: top;">
+                        <div class="col-sm-2 col-xs-12">
+                            <div id="gtco-eng1" style="float: left; height: 20px">
+                                <p style="font-size: 1px; color: white; white-space: nowrap;">&nbsp;</p>
+                            </div>
+                            <div id="gtco-logo" style="float: right;">
+                                <a href="index.html" style="color: white; white-space: nowrap;" align="left">夏和股份有限公司
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-10 text-right menu-1 main-nav" style="float: right;">
+                            <!--  -->
+                            <ul>
+                                <li class="active"><a href="#" style="color: white" data-nav-section="home">Home</a></li>
+                                <li><a href="#" style="color: white;" data-nav-section="brif">優惠簡介</a></li>
+                                <li><a href="#" style="color: white" data-nav-section="product">服務及商品</a></li>
+                                <li><a href="#" style="color: white" data-nav-section="news">最新消息</a></li>
+                                <li><a href="#" style="color: white" data-nav-section="products">場地照片</a></li>
+                                <li><a href="#" style="color: white" data-nav-section="contact">聯絡我們</a></li>
+                                <!-- <li><a style="color:white" onclick='to_login()'>會員登入</a></li> -->
+                            </ul>
+
+                        </div>
+
+                    </div>
+                </div>
+            </nav>
+            <div id="gtco-hero" class="js-fullheight" data-section="home">
+                <div class="flexslider js-fullheight">
+                    <ul class="slides">
+                        <li style="background-color: black;">
+
+                            <div class="overlay"></div>
+                            <div class="container">
+                                <div class="col-md-10 col-md-offset-1 text-center js-fullheight slider-text">
+                                    <div class="slider-text-inner">
+                                        <img src="images/role1.jpg" alt="alt"/>
+                                        <p><a href="https://line.me/R/ti/p/%40anz4974i" target="_blank" class="btn btn-primary btn-lg">我要購買</a></p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li style="background-color: black;">
+
+                            <div class="overlay"></div>
+                            <div class="container">
+                                <div class="col-md-10 col-md-offset-1 text-center js-fullheight slider-text">
+                                    <div class="slider-text-inner">
+                                        <img src="images/role2.jpg" alt="alt"/>
+                                        <p><a href="https://line.me/R/ti/p/%40anz4974i" target="_blank" class="btn btn-primary btn-lg">我要購買</a></p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li style="background-color: black;">
+
+                            <div class="overlay"></div>
+                            <div class="container">
+                                <div class="col-md-10 col-md-offset-1 text-center js-fullheight slider-text">
+                                    <div class="slider-text-inner">
+                                        <img src="images/role3.jpg" alt="alt"/>
+                                        <p><a href="https://line.me/R/ti/p/%40anz4974i" target="_blank" class="btn btn-primary btn-lg">我要購買</a></p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li style="background-color: black;">
+
+                            <div class="overlay"></div>
+                            <div class="container">
+                                <div class="col-md-10 col-md-offset-1 text-center js-fullheight slider-text">
+                                    <div class="slider-text-inner">
+                                        <img src="images/role4.jpg" alt="alt"/>
+                                        <p><a href="https://line.me/R/ti/p/%40anz4974i" target="_blank" class="btn btn-primary btn-lg">我要購買</a></p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="gtco-section-overflow">
+                <!--style="background:rgba(0, 0, 0, 0.7); padding-bottom: 0em;-->
+                <div class="gtco-section" id="gtco-portfolio" data-section="brif" style="background-image: url(images/img_4.jpg); background-size: cover; background-repeat: no-repeat;">
+                    <div class="gtco-container">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2 text-center gtco-heading" style="padding-bottom: 0em; margin-bottom: 0em;">
+                                <h2 style="color: white">優惠簡介</h2>
+                                <br />
+                                <p id="brif_p" style="color: white;">
+                                    購買越多組合折數越低，立即連繫客服下單
+                                    <br />
+                                    慶開幕，滿額贈''PS4把手悠遊卡''，數量有限要買要快
+                                </p>
+                                <img src="images/1595323526623.jpg" alt="Image" class="img-responsive"/>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="gtco-blog" data-section="product" style="background-image: url(images/img_5.jpg); background-size: cover; background-repeat: no-repeat;">
+                    <div class="gtco-container">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2 text-center gtco-heading">
+                                <h2 style="color: white">服務及商品</h2>
+                            </div>
+                        </div>
+                        <br />
+                        <br />
+                        <br />
+                        <div class="row" style="text-align: center;">
+							<h3 style="color: white">主機板種類</h3>
+                            <div class="col-md-4">
+                                <a class="gtco-card-item has-text" style="background-color:gray;padding: 10px;">
+                                    <div class="gtco-text text-left">
+                                        <h2 style="color:#26ff9b;">礦機主機板(機電一體)</h2>
+                                        <p style="color: white;">
+                                            $150,000
+                                        </p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                                <a  class="gtco-card-item has-text" style="background-color:gray;padding: 10px;">
+                                    <div class="gtco-text text-left">
+                                        <h2 style="color:#26ff9b;">超高階主機板</h2>
+                                        <p style="color: white;">
+                                            $300,100
+                                        </p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                                <a class="gtco-card-item has-text" style="background-color:gray;padding: 10px;">
+                                    <div class="gtco-text text-left">
+                                        <h2 style="color:#26ff9b;">主機板(大板)</h2>
+                                        <p style="color: white;">
+                                            $4,500
+                                        </p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="clearfix visible-lg-block visible-md-block"></div>
+						    
+                            <h3 style="color: white">顯示卡種類</h3>
+                            <div class="col-md-6">
+                                <a class="gtco-card-item has-text" style="background-color:gray;padding: 10px;">
+                                    <div class="gtco-text text-left">
+                                        <h2 style="color:#26ff9b;">超高皆顯示卡</h2>
+                                        <p style="color: white;">
+                                            $49,850
+                                        </p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-6">
+                                <a  class="gtco-card-item has-text" style="background-color:gray;padding: 10px;">
+                                    <div class="gtco-text text-left">
+                                        <h2 style="color:#26ff9b;">中階顯示卡</h2>
+                                        <p style="color: white;">
+                                            $11,950
+                                        </p>
+                                    </div>
+                                </a>
+                            </div>
+                            <br/>
+
+
+                            <h3 style="color: white">程式軟體種類</h3>
+                            <div class="col-md-4">
+                                <a class="gtco-card-item has-text" style="background-color:gray;padding: 10px;">
+                                    <div class="gtco-text text-left">
+                                        <h2 style="color:#26ff9b;">客製化智慧服務</h2>
+                                        <p style="color: white;">
+                                            $200,000
+                                        </p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                                <a  class="gtco-card-item has-text" style="background-color:gray;padding: 10px;">
+                                    <div class="gtco-text text-left">
+                                        <h2 style="color:#26ff9b;">區塊鏈系統應用服務</h2>
+                                        <p style="color: white;">
+                                            $580,000
+                                        </p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                                <a class="gtco-card-item has-text" style="background-color:gray;padding: 10px;">
+                                    <div class="gtco-text text-left">
+                                        <h2 style="color:#26ff9b;">加密貨幣設計與維護</h2>
+                                        <p style="color: white;">
+                                            $80,000
+                                        </p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="clearfix visible-lg-block visible-md-block"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--style="background:rgba(0, 0, 0, 0.7);"-->
+                <div id="gtco-blog" data-section="news" style="background-image: url(images/img_5.jpg); background-size: cover; background-repeat: no-repeat;">
+                    <div class="gtco-container">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2 text-center gtco-heading">
+                                <h2 style="color: white">最新消息</h2>
+                            </div>
+                        </div>
+                        <br />
+                        <br />
+                        <br />
+                        <div class="row" style="text-align: center;">
+							<h3 style="color: white">優惠折扣</h3>
+							
+                            <div class="col-md-4">
+                                <a id="myImg1" class="gtco-card-item has-text">
+                                    <figure>
+                                        <div class="overlay"><i class="ti-plus"></i></div>
+                                        <img src="images/News/1.jpg" alt="Image" class="img-responsive"/>
+                                    </figure>
+                                    <div class="gtco-text text-left">
+                                        <h2>賽車座椅 + 方向盤</h2>
+                                        <p class="gtco-category">折扣碼 AU729</p>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-md-4">
+                                <a id="myImg2" class="gtco-card-item has-text">
+                                    <figure>
+                                        <div class="overlay"><i class="ti-plus"></i></div>
+                                        <img src="images/News/2.jpg" alt="Image" class="img-responsive"/>
+                                    </figure>
+                                    <div class="gtco-text text-left">
+                                        <h2>賽車遊戲全套</h2>
+                                        <p class="gtco-category">折扣碼 ZG517</p>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-md-4">
+                                <a id="myImg3" class="gtco-card-item has-text">
+                                    <figure>
+                                        <div class="overlay"><i class="ti-plus"></i></div>
+                                        <img src="images/News/3.jpg" alt="Image" class="img-responsive"/>
+                                    </figure>
+                                    <div class="gtco-text text-left">
+                                        <h2>新款方向盤 & 油門踏板</h2>
+                                        <p class="gtco-category">折扣碼 QS6990</p>
+                                    </div>
+                                </a>
+                            </div>
+							
+                            
+					        <div class="clearfix visible-lg-block visible-md-block"></div>
+						
+                            <div class="col-md-4">
+                                <a id="myImg4" class="gtco-card-item has-text">
+                                    <figure>
+                                        <div class="overlay"><i class="ti-plus"></i></div>
+                                        <img src="images/News/4.jpg" alt="Image" class="img-responsive"/>
+                                    </figure>
+                                    <div class="gtco-text text-left">
+                                        <h2>Switch Lite</h2>
+                                        <p class="gtco-category">折扣碼 SW8190</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="clearfix visible-sm-block"></div>
+
+                           <div class="col-md-4">
+                                <a id="myImg5" class="gtco-card-item has-text">
+                                    <figure>
+                                        <div class="overlay"><i class="ti-plus"></i></div>
+                                        <img src="images/News/5.jpg" alt="Image" class="img-responsive"/>
+                                    </figure>
+                                    <div class="gtco-text text-left">
+                                        <h2>Switch 全套</h2>
+                                        <p class="gtco-category">折扣碼 SW11090</p>
+                                    </div>
+                                </a>
+                            </div>
+
+                           <div class="col-md-4">
+                                <a id="myImg6" class="gtco-card-item has-text">
+                                    <figure>
+                                        <div class="overlay"><i class="ti-plus"></i></div>
+                                        <img src="images/News/6.jpg" alt="Image" class="img-responsive"/>
+                                    </figure>
+                                    <div class="gtco-text text-left">
+                                        <h2>PS4 Pro</h2>
+                                        <p class="gtco-category">折扣碼 PS999</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="clearfix visible-sm-block"></div>
+							<!--
+                            <div class="clearfix visible-lg-block visible-md-block"></div>
+                            <div class="clearfix visible-sm-block"></div>
+							-->
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="gtco-section-overflow">
+                    <!--style="background:rgba(0, 0, 0, 0.7);"-->
+                    <div id="gtco-products" data-section="products" style="background-image: url(images/img_1.jpg); background-size: cover; background-repeat: no-repeat;">
+                        <div class="gtco-container">
+                            <div class="row">
+                                <div class="col-md-8 col-md-offset-2 text-center gtco-heading">
+                                    <h2 style="color: white">場地照片</h2>
+                                    <p style="color: white">
+                                        場地歡迎預約活動或會談: 02-2712-1314 轉 805<br />
+                                        (請雙擊檢視圖片)
+                                    </p>
+                                </div>
+                            </div>
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <div class="row">
+                                <div class="owl-carousel owl-carousel-carousel">
+                                    <div class="item">
+                                        <img class="ffuut" id="product1" src="images/PlacePhoto/1.jpg" alt="alt">
+                                    </div>
+                                    <div class="item">
+                                        <img class="ffuut" src="images/PlacePhoto/2.jpg" alt="alt">
+                                    </div>
+									<!--
+                                    <div class="item">
+                                        <img class="ffuut" src="images/PlacePhoto/3.jpg" alt="alt">
+                                    </div>
+									-->
+                                    <div class="item">
+                                        <img class="ffuut" src="images/PlacePhoto/4.jpg" alt="alt">
+                                    </div>
+									<!--
+                                    <div class="item">
+                                        <img class="ffuut" src="images/PlacePhoto/5.jpg" alt="alt">
+                                    </div>
+                                    <div class="item">
+                                        <img class="ffuut" src="images/PlacePhoto/6.jpg" alt="alt">
+                                    </div>
+                                    <div class="item">
+                                        <img class="ffuut" src="images/PlacePhoto/7.jpg" alt="alt">
+                                    </div>
+                                    <div class="item">
+                                        <img class="ffuut" src="images/PlacePhoto/8.jpg" alt="alt">
+                                    </div>
+									-->
+                                    <div class="item">
+                                        <img class="ffuut" src="images/PlacePhoto/9.jpg" alt="alt">
+                                    </div>
+                                    <div class="item">
+                                        <img class="ffuut" src="images/PlacePhoto/10.jpg" alt="alt">
+                                    </div>
+                                    <div class="item">
+                                        <img class="ffuut" src="images/PlacePhoto/11.jpg" alt="alt">
+                                    </div>
+									<!--
+                                    <div class="item">
+                                        <img class="ffuut" src="images/PlacePhoto/12.jpg" alt="alt">
+                                    </div>
+                                    <div class="item">
+                                        <img class="ffuut" src="images/PlacePhoto/13.jpg" alt="alt">
+                                    </div>
+                                    <div class="item">
+                                        <img class="ffuut" src="images/PlacePhoto/14.jpg" alt="alt">
+                                    </div>
+									-->
+                                    <div class="item">
+                                        <img class="ffuut" src="images/PlacePhoto/15.jpg" alt="alt">
+                                    </div>
+                                    <div class="item">
+                                        <img class="ffuut" src="images/PlacePhoto/16.jpg" alt="alt">
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="gtco-contact" data-section="contact" class="gtco-cover gtco-cover-xs" style="background-image: url(images/img_bg_2.jpg);">
+                    <div class="overlay"></div>
+                    <div class="gtco-container">
+                        <div class="row text-center">
+                            <div class="display-t">
+                                <div class="display-tc">
+                                    <div class="col-md-12">
+                                        <h3>創辦人：Steve</h3>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <h3>公司地址：台北市松山區南京東路四段1號8樓</h3>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <h3 id="contact_h3">電話：02-2712-1314 轉 805</h3>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <!--<h3> 營業時間：08:00-19:00（週日公休） </h3>-->
+                                    </div>
+                                    <div class="col-md-12">
+                                        <h3>Line@: <a href="https://line.me/R/ti/p/%40anz4974i">
+                                            <img height="36" border="0" alt="加入好友" src="https://scdn.line-apps.com/n/line_add_friends/btn/zh-Hant.png"></a>
+                                        </h3>
+                                        <!--
+                                    <img src="images/Line.jpg" style="width:200px;height:200px" alt="alt">
+                                    -->
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <footer id="gtco-footer" role="contentinfo" style="background: rgba(0, 0, 0, 0.7);">
+                    <div class="gtco-container">
+
+                        <div class="row copyright">
+                            <div class="col-md-12">
+                                <p class="pull-left">
+                                    <small class="block" style="color: white">夏和股份有限公司</small>
+                                </p>
+                                <p class="pull-right">
+                                    <ul class="gtco-social-icons pull-right">
+                                        <!--<li><a href="#"><i class="icon-twitter"></i></a></li>-->
+                                        <!--<li><a href="https://www.facebook.com/anz4974i/"><i class="icon-facebook"></i></a></li>-->
+                                    </ul>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+
+            <div class="gototop js-top">
+                <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+            </div>
+    </form>
+
+
+
+    <!-- 最新一 -->
+    <script>
+        // Get the modal
+        var modal = document.getElementById('myModal');
+
+        // Get the image and insert it inside the modal - use its "alt" text as a caption
+        var img = document.getElementById('myImg1');
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+        var caption_h2Text = document.getElementById("caption_h2");
+        var caption_pText = document.getElementById("caption_p");
+        img.onclick = function () {
+            modal.style.display = "block";
+            //modalImg.src = this.src;
+            modalImg.src = "images/News/1.jpg";
+            caption_h2Text.innerHTML = "賽車座椅 + 方向盤";
+            //caption_pText.innerHTML = "$79,989";
+        }
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+    </script>
+
+    <!-- 最新二 -->
+    <script>
+        // Get the modal
+        var modal = document.getElementById('myModal');
+
+        // Get the image and insert it inside the modal - use its "alt" text as a caption
+        var img = document.getElementById('myImg2');
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+        var caption_h2Text = document.getElementById("caption_h2");
+        var caption_pText = document.getElementById("caption_p");
+        img.onclick = function () {
+            modal.style.display = "block";
+            //modalImg.src = this.src;
+            modalImg.src = "images/News/2.jpg";
+            caption_h2Text.innerHTML = "賽車遊戲全套";
+            //caption_pText.innerHTML = "$228,000";
+        }
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+    </script>
+
+    <!-- 最新三 -->
+    <script>
+        // Get the modal
+        var modal = document.getElementById('myModal');
+
+        // Get the image and insert it inside the modal - use its "alt" text as a caption
+        var img = document.getElementById('myImg3');
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+        var caption_h2Text = document.getElementById("caption_h2");
+        var caption_pText = document.getElementById("caption_p");
+        img.onclick = function () {
+            modal.style.display = "block";
+            //modalImg.src = this.src;
+            modalImg.src = "images/News/3.jpg";
+            caption_h2Text.innerHTML = "新款方向盤 & 油門踏板";
+            //caption_pText.innerHTML = "$6,990";
+        }
+
+		// Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+	</script>
+
+     <!-- 最新四 -->
+    <script>
+        // Get the modal
+        var modal = document.getElementById('myModal');
+
+        // Get the image and insert it inside the modal - use its "alt" text as a caption
+        var img = document.getElementById('myImg4');
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+        var caption_h2Text = document.getElementById("caption_h2");
+        var caption_pText = document.getElementById("caption_p");
+        img.onclick = function () {
+            modal.style.display = "block";
+            //modalImg.src = this.src;
+            modalImg.src = "images/News/4.jpg";
+            caption_h2Text.innerHTML = "Switch Lite";
+            //caption_pText.innerHTML = "$8,190";
+        }
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+    </script>
+
+
+    <!-- 最新五 -->
+    <script>
+        // Get the modal
+        var modal = document.getElementById('myModal');
+
+        // Get the image and insert it inside the modal - use its "alt" text as a caption
+        var img = document.getElementById('myImg5');
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+        var caption_h2Text = document.getElementById("caption_h2");
+        var caption_pText = document.getElementById("caption_p");
+        img.onclick = function () {
+            modal.style.display = "block";
+            //modalImg.src = this.src;
+            modalImg.src = "images/News/4.jpg";
+            caption_h2Text.innerHTML = "Switch 全套";
+            //caption_pText.innerHTML = "$11,090";
+        }
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+    </script>
+
+    <!-- 最新六 -->
+    <script>
+        // Get the modal
+        var modal = document.getElementById('myModal');
+
+        // Get the image and insert it inside the modal - use its "alt" text as a caption
+        var img = document.getElementById('myImg6');
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+        var caption_h2Text = document.getElementById("caption_h2");
+        var caption_pText = document.getElementById("caption_p");
+        img.onclick = function () {
+            modal.style.display = "block";
+            //modalImg.src = this.src;
+            modalImg.src = "images/News/4.jpg";
+            caption_h2Text.innerHTML = "PS4 Pro";
+            //caption_pText.innerHTML = "$19,999";
+        }
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+    </script>
+
+    <script>
+		// Get the modal
+        var modal = document.getElementById('myModal');
+		// Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+		
+        $(document).ready(function () {
+            $('.ffuut').dblclick(function () {
+                // do something
+                var modal = document.getElementById('myModal');
+
+                // Get the image and insert it inside the modal - use its "alt" text as a caption
+                //var img = document.getElementById('product1');
+                var img = document.getElementsByClassName('ffuut');
+                var modalImg = document.getElementById("img01");
+                var captionText = document.getElementById("caption");
+
+                // alert('Picture fade out...')
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                //modalImg.src = "images/第3張.png";
+                captionText.innerHTML = "";
+                // $(this).fadeOut().slow();
+            });
+        });
+	</script>
+
+
+</body>
+</html>
