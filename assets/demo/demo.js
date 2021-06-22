@@ -1976,7 +1976,7 @@ demo = {
     myChart = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"],
+        labels: ["06/12", "06/13", "06/14", "06/15", "06/16", "06/17", "06/18"],
         datasets: [{
           label: "Active Users",
           borderColor: "#6bd098",
@@ -1984,7 +1984,7 @@ demo = {
           pointHoverRadius: 0,
           fill: false,
           borderWidth: 3,
-          data: [542, 480, 430, 550, 530, 453, 380, 434, 568, 610]
+          data: [51.1, 48.15, 53.32, 54.78, 56.88, 59.52, 61.53]
         }]
       },
       options: {
@@ -2046,7 +2046,7 @@ demo = {
     myChart = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: ["12pm", "3pm", "6pm", "9pm", "12am", "3am", "6am", "9am"],
+        labels: ["06/12", "06/13", "06/14", "06/15", "06/16", "06/17", "06/18"],
         datasets: [{
           label: "Email Stats",
           borderColor: "#ef8156",
@@ -2055,7 +2055,7 @@ demo = {
           fill: false,
           backgroundColor: gradientFill,
           borderWidth: 3,
-          data: [40, 500, 650, 700, 1200, 1250, 1300, 1900]
+          data: [598.61, 599.45, 602.97, 605.33, 606.53, 607.93, 607.88]
         }]
       },
       options: {
@@ -2116,7 +2116,7 @@ demo = {
     var a = {
       type: "line",
       data: {
-        labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October"],
+        labels: ["06/12", "06/13", "06/14", "06/15", "06/16", "06/17", "06/18"],
         datasets: [{
           label: "Active Countries",
           backgroundColor: gradientFill,
@@ -2125,7 +2125,7 @@ demo = {
           pointRadius: 0,
           fill: false,
           borderWidth: 3,
-          data: [80, 78, 86, 96, 83, 85, 76, 75, 88, 90]
+          data: [-1.39, -0.55, 2.97, 5.33, 6.53, 7.93, 7.88]
         }]
       },
       options: {
