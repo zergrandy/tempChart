@@ -329,8 +329,8 @@ Coded by www.creative-tim.com
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="javascript:;">量化交易炒幣-儀表板</a>
-            <a class="navbar-brand" href="javascript:;">2021-06-12 ~ 2021-06-18</a>
+            <a class="navbar-brand" href="javascript:;">量化交易-儀表板</a>
+            <a class="navbar-brand" href="javascript:;" id="broadDate" >2021-06-12 ~ 2021-06-18</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -397,7 +397,7 @@ Coded by www.creative-tim.com
                   <div class="col-7 col-md-8">
                     <div class="numbers">
                       <p class="card-category">總獲利</p>
-                      <p class="card-title">5.196 Usdt<p>
+                      <p class="card-title" id="profitAll">5.196 Usdt<p>
                     </div>
                   </div>
                 </div>
@@ -424,7 +424,7 @@ Coded by www.creative-tim.com
                   <div class="col-7 col-md-8">
                     <div class="numbers">
                       <p class="card-category">預期獲利</p>
-                      <p class="card-title">5.1988 Usdt<p>
+                      <p class="card-title" id="profitExpectAll">5.1988 Usdt<p>
                     </div>
                   </div>
                 </div>
@@ -451,7 +451,7 @@ Coded by www.creative-tim.com
                   <div class="col-7 col-md-8">
                     <div class="numbers">
                       <p class="card-category">餘額</p>
-                      <p class="card-title">$ 607.8818<p>
+                      <p class="card-title" id="balance">$ 607.8818<p>
                     </div>
                   </div>
                 </div>
@@ -478,7 +478,7 @@ Coded by www.creative-tim.com
                   <div class="col-7 col-md-8">
                     <div class="numbers">
                       <p class="card-category">勝率</p>
-                      <p class="card-title">52.94%<p>
+                      <p class="card-title" id="winRate">52.94%<p>
                     </div>
                   </div>
                 </div>
@@ -508,7 +508,7 @@ Coded by www.creative-tim.com
                   <div class="col-7 col-md-8">
                     <div class="numbers">
                       <p class="card-category">最大獲利單</p>
-                      <p class="card-title">2.109 Usdt<p>
+                      <p class="card-title" id="maxProfit">2.109 Usdt<p>
                     </div>
                   </div>
                 </div>
@@ -535,7 +535,7 @@ Coded by www.creative-tim.com
                   <div class="col-7 col-md-8">
                     <div class="numbers">
                       <p class="card-category">最小獲利單(包含虧損)</p>
-                      <p class="card-title">-1.1664 Usdt<p>
+                      <p class="card-title" id="minProfit">-1.1664 Usdt<p>
                     </div>
                   </div>
                 </div>
@@ -562,7 +562,7 @@ Coded by www.creative-tim.com
                   <div class="col-7 col-md-8">
                     <div class="numbers">
                       <p class="card-category">以買單開倉數量</p>
-                      <p class="card-title">12<p>
+                      <p class="card-title" id="startBuyCount">12<p>
                     </div>
                   </div>
                 </div>
@@ -589,7 +589,7 @@ Coded by www.creative-tim.com
                   <div class="col-7 col-md-8">
                     <div class="numbers">
                       <p class="card-category">以賣單開倉數量</p>
-                      <p class="card-title">5<p>
+                      <p class="card-title" id="startSellCount">5<p>
                     </div>
                   </div>
                 </div>
@@ -898,13 +898,60 @@ Coded by www.creative-tim.com
   <script src="../assets/demo/demo.js"></script>
   <script>
     $(document).ready(function() {
+
+      //READ DATA
+      var startBuyCount = localStorage.getItem('startBuyCount');
+      var startSellCount = localStorage.getItem('startSellCount');
+      var profitAll = localStorage.getItem('profitAll');
+      var profitExpectAll = localStorage.getItem('profitExpectAll');
+      var winRate = localStorage.getItem('winRate');
+      var maxProfit = localStorage.getItem('maxProfit');
+      var minProfit = localStorage.getItem('minProfit');
+      var profitObjAryAllString = localStorage.getItem('profitObjAryAll');
+      var profitObjAryAll = JSON.parse(profitObjAryAllString);
+
+      var balanceList = localStorage.getItem('balanceList');
+      var balanceAry = balanceList.split(',');
+      
+
+      
+
+      $("#startBuyCount").text(startBuyCount);
+      $("#startSellCount").text(startSellCount);
+      $("#profitAll").text(parseFloat(profitAll).toFixed(3));
+      $("#profitExpectAll").text(parseFloat(profitExpectAll).toFixed(3));
+      $("#winRate").text(parseFloat(winRate).toFixed(3));
+      $("#maxProfit").text(parseFloat(maxProfit).toFixed(3));
+      $("#minProfit").text(parseFloat(minProfit).toFixed(3));
+      $("#balance").text(parseFloat(balanceAry[balanceAry.length - 1]).toFixed(3));
+
+      var dateList = localStorage.getItem('dateList');
+      var dateAry = dateList.split(',');
+      var start = dateAry[0];
+      var end = dateAry[dateAry.length - 1];
+      var broadDate = start + " ~ " + end;
+
+      //console.log(profitObjAryAll);
+
+      $("#broadDate").text(broadDate);      
+
+
+      //console.log(111);
+
       // Javascript method's body can be found in assets/js/demos.js
       demo.initDashboardPageCharts();
 
 
       demo.initVectorMap();
+      
+      
+
 
     });
+
+    
+
+
   </script>
 </body>
 

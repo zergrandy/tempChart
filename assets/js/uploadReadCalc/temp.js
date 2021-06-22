@@ -4,21 +4,26 @@ var orderInfoAry = [];
 var orderObjAry = [];
 var orderObjAryAll = [];
 var profitObjAryAll = [];
-
+var openList = [];
 
 
 
 //讀取多個文字檔
 function readmultifiles(files) {
     var reader = new FileReader();
+
+
     function readFile(index) {
         if (index >= files.length) return;
         var file = files[index];
+        reader.fileName = file.name
         reader.onload = function (e) {
             // get file content  
             var lineTxt = e.target.result;
+            var filaName = e.target.fileName;
+            console.log('filaName: ' + filaName);
             console.log(lineTxt);
-            processFile(lineTxt);
+            processFile(lineTxt, filaName);
 
 
 
@@ -30,7 +35,8 @@ function readmultifiles(files) {
 }
 
 //讀取單一文字檔
-function processFile(lineTxt) {
+function processFile(lineTxt, filaName) {
+    fileDate = filaName.replace("Log.txt", "");
     results = lineTxt.split("\r\n");
 
     for (var i = 0; i < results.length; i++) {
@@ -62,9 +68,7 @@ function processFile(lineTxt) {
         }
         if (mod == 5) {
             orderInfoAry.push(result);
-            var mod;
-            var balance;
-            mod, balance = checkOrderEnd(result, mod);
+            mod = checkOrderEnd(result, mod);
             if (mod == 0) {
                 var orderObj = buildOrderObj(orderInfoAry);
                 orderObjAry.push(orderObj);
@@ -74,7 +78,7 @@ function processFile(lineTxt) {
     }
 
     //這邊要算出當前為止的勝率，統計當前為止的餘額，統計當前為止的獲利
-
+    calcAll(fileDate);
 
 }
 
@@ -147,12 +151,10 @@ function checkOrderSuccess(textRow, mod) {
 
 function checkOrderEnd(textRow, mod) {
     console.log(textRow);
-    var balance = 0;
     if (textRow.includes("餘額")) {
-        balance = textRow.split(": ")[1];
         mod = 0;
     }
-    return mod, balance;
+    return mod;
 }
 
 //組件下單物件
@@ -168,6 +170,14 @@ function buildOrderObj(orderInfoAry) {
     var dtBack = orderInfoAry[9].split(" : ")[1];
     var stopPrice = orderInfoAry[10].split(" : ")[1];
     //var stopQty = orderInfoAry[11].split(" : ")[1];
+    var balance;
+
+    orderInfoAry.forEach(element => {
+        if(element.includes("餘額: ")){
+            balance = element.replace("餘額: ", "");
+        }        
+    });
+
     var orderObj = {
         fileName: fileName,
         strategyType: strategyType,
@@ -179,6 +189,7 @@ function buildOrderObj(orderInfoAry) {
         avgPrice: avgPrice,
         dtBack: dtBack,
         stopPrice: stopPrice,
+        balance: balance,
         //stopQty : stopQty,
     };
     return orderObj;
@@ -186,9 +197,7 @@ function buildOrderObj(orderInfoAry) {
 
 
 //用下單物件列表，算出獲利物件
-function calc(orderObjAry) {
-
-    var openList = [];
+function calc(openList, orderObjAry) {
     var profitObjAry = [];
 
     orderObjAry.forEach(element => {
@@ -198,15 +207,19 @@ function calc(orderObjAry) {
         if (strategyType == "建倉") {
             openList = open(openList, element);
         } else if (strategyType == "平倉") {
-            openList, profitObj = close(openList, element);
+            var tmpAry = close(openList, element);
+            openList = tmpAry[0];
+            var profitObj = tmpAry[1];
             profitObjAry.push(profitObj);
         } else if (strategyType == "建倉(翻單)") {
-            openList, profitObj = flip(openList, element);
+            var tmpAry = flip(openList, element);
+            openList = tmpAry[0];
+            var profitObj = tmpAry[1];
             profitObjAry.push(profitObj);
         }
     });
 
-    return profitObjAry;
+    return [openList, profitObjAry];
 }
 
 function flip(openList, elementEnd) {
@@ -232,7 +245,7 @@ function flip(openList, elementEnd) {
     //open
     elementEnd.origQty = newOpenQty;
     openListNew.push(elementEnd);
-    return openListNew, profitObj;
+    return [openListNew, profitObj];
 }
 
 function open(openList, elementStart) {
@@ -257,7 +270,7 @@ function close(openList, elementEnd) {
         }
     });
 
-    return openListNew, profitObj;
+    return [openListNew, profitObj];
 }
 
 function buildProfitObj(elementStart, elementEnd) {
@@ -304,3 +317,108 @@ function buildProfitObj(elementStart, elementEnd) {
 
 
 
+//算出所有當前指標
+function calcAll(fileDate) {
+    if (orderObjAry.length != 0) {
+        orderObjAryAll.push(orderObjAry);
+        orderObjAry = [];
+    }
+
+    var openList = [];
+    orderObjAryAll.forEach(element => {
+
+        element.forEach(e1 => {
+            console.log(e1);
+        });
+        var tempAry = calc(openList, element);
+        openList = tempAry[0];
+        var profitObjAry = tempAry[1];
+
+        profitObjAry.forEach(profitObj => {
+            if (profitObj != null) {
+                profitObjAryAll.push(profitObj);
+            }
+        });
+    });
+
+    //
+    console.log("========================");
+    var posCount = 0;
+    var nagCount = 0;
+    var startBuyCount = 0;//以買單開倉數量
+    var startSellCount = 0;//以賣單開倉數量
+    var profitAll = 0;//總獲利
+    var profitExpectAll = 0;//總獲利預期
+    profitObjAryAll.forEach(profitObj => {
+
+        profitAll += profitObj.profit;
+        profitExpectAll += profitObj.profitExpect;
+
+        if (profitObj.profit > 0) {
+            posCount++;
+        } else {
+            nagCount++;
+        }
+
+        if (profitObj.buySellStart == "BUY") {
+            startBuyCount++;
+        } else if (profitObj.buySellStart == "SELL") {
+            startSellCount++;
+        }
+
+        console.log(profitObj);
+    });
+
+    var winRate = posCount / (posCount + nagCount);//勝率        
+    var maxProfit = Math.max.apply(Math, profitObjAryAll.map(function (o) { return o.profit; }));//最大獲利
+    var minProfit = Math.min.apply(Math, profitObjAryAll.map(function (o) { return o.profit; }));//最小獲利(包含虧損)
+
+    console.log("以買單開倉數量:" + startBuyCount);
+    console.log("以賣單開倉數量:" + startSellCount);
+
+    console.log("總獲利:" + profitAll);
+    console.log("總獲利預期:" + profitExpectAll);
+
+    console.log("勝率:" + winRate);
+    console.log("最大獲利:" + maxProfit);
+    console.log("最小獲利(包含虧損):" + minProfit);
+
+    var tt = orderObjAryAll[orderObjAryAll.length - 1];
+    var lastOrderObj = tt[tt.length - 1];
+    console.log(lastOrderObj);
+
+    //
+    addLocalStorage('dateList', fileDate);
+    addLocalStorage('profitList', profitAll);
+    addLocalStorage('winRateList', winRate);
+    addLocalStorage('balanceList', lastOrderObj.balance);
+
+    //localStorage.setItem('startBuyCount', startBuyCount);
+    //fileDate
+    /* 
+        localStorage.setItem('startBuyCount', startBuyCount);
+        localStorage.setItem('startSellCount', startSellCount);
+        localStorage.setItem('profitAll', profitAll);
+        localStorage.setItem('profitExpectAll', profitExpectAll);
+        localStorage.setItem('winRate', winRate);
+        localStorage.setItem('maxProfit', maxProfit);
+        localStorage.setItem('minProfit', minProfit);
+        localStorage.setItem('profitObjAryAll', JSON.stringify(profitObjAryAll));
+    */
+    //reset
+    //orderObjAryAll = [];
+    profitObjAryAll = [];
+
+}
+
+
+
+function addLocalStorage(ItemKey, thisValue) {
+    var list = localStorage.getItem(ItemKey);
+    if(list == null){
+        localStorage.setItem(ItemKey, thisValue);
+    }else{
+        var addDot = list + ',' + thisValue;
+        localStorage.setItem(ItemKey, addDot);
+    }
+}

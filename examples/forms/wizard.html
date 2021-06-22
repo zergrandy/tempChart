@@ -462,7 +462,8 @@ Coded by www.creative-tim.com
                       <input type="file" id="files" name="files" multiple>
                       <button id=upload>Upload</button>
                       <button id=show>Show</button>
-
+                      <button id=clear>clear</button>
+                      
                       <div class="col-lg-10">
                         <div class="row">
                           <div class="col-sm-4">
@@ -583,6 +584,7 @@ Coded by www.creative-tim.com
 
   <script>
     $(document).ready(function () {
+
       // Initialise the wizard
       demo.initWizard();
       setTimeout(function () {
@@ -594,8 +596,11 @@ Coded by www.creative-tim.com
     var fileInput = $('#files');
     var uploadButton = $('#upload');
     var showButton = $('#show');
+    var clearButton = $('#clear');
 
-    
+    clearButton.on('click', function () {
+      localStorage.clear();
+    });
 
     showButton.on('click', function () {
       if (orderObjAry.length != 0) {
@@ -604,20 +609,23 @@ Coded by www.creative-tim.com
       }
 
 
+      var openList = [];
       orderObjAryAll.forEach(element => {
 
         element.forEach(e1 => {
           console.log(e1);
         });
-        profitObjAry = calc(element);
+        var tempAry = calc(openList, element);
+        openList = tempAry[0];
+        var profitObjAry = tempAry[1];
 
         profitObjAry.forEach(profitObj => {
           if (profitObj != null) {
             profitObjAryAll.push(profitObj);
           }
         });
-
       });
+
 
       //
       console.log("========================");
@@ -646,8 +654,6 @@ Coded by www.creative-tim.com
 
 
         console.log(profitObj);
-
-
       });
 
       var winRate = posCount / (posCount + nagCount);//勝率        
@@ -663,15 +669,36 @@ Coded by www.creative-tim.com
       console.log("勝率:" + winRate);
       console.log("最大獲利:" + maxProfit);
       console.log("最小獲利(包含虧損):" + minProfit);
+
+      localStorage.setItem('startBuyCount', startBuyCount);
+      localStorage.setItem('startSellCount', startSellCount);
+      localStorage.setItem('profitAll', profitAll);
+      localStorage.setItem('profitExpectAll', profitExpectAll);
+      localStorage.setItem('winRate', winRate);
+      localStorage.setItem('maxProfit', maxProfit);
+      localStorage.setItem('minProfit', minProfit);
+      localStorage.setItem('profitObjAryAll', JSON.stringify(profitObjAryAll));
+
+      //reset
+      //orderObjAryAll = [];
+      profitObjAryAll = [];
     });
+
 
     //上傳文字檔觸發
     const inputElement = document.getElementById("files");
     inputElement.addEventListener("change", handleFiles, false);
     function handleFiles() {
+
+      localStorage.removeItem('dateList');
+      localStorage.removeItem('profitList');
+      localStorage.removeItem('winRateList');
+      localStorage.removeItem('balanceList');
+
       const fileList = this.files;
       readmultifiles(fileList);
     }
+
 
   </script>
 </body>

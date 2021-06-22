@@ -1973,10 +1973,19 @@ demo = {
     gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
     gradientFill.addColorStop(1, "rgba(249, 99, 59, 0.40)");
 
+    var dateList = localStorage.getItem('dateList');
+    var dateAry = dateList.split(',');
+    //console.log(dateAry);
+
+    var winRateList = localStorage.getItem('winRateList');
+    var winRateAry = winRateList.split(',');
+    console.log(winRateAry);
+
     myChart = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: ["06/12", "06/13", "06/14", "06/15", "06/16", "06/17", "06/18"],
+        //labels: ["06/12", "06/13", "06/14", "06/15", "06/16", "06/17", "06/18"],
+        labels: dateAry,
         datasets: [{
           label: "Active Users",
           borderColor: "#6bd098",
@@ -1984,7 +1993,8 @@ demo = {
           pointHoverRadius: 0,
           fill: false,
           borderWidth: 3,
-          data: [51.1, 48.15, 53.32, 54.78, 56.88, 59.52, 61.53]
+          //data: [51.1, 48.15, 53.32, 54.78, 56.88, 59.52, 61.53]
+          data: winRateAry
         }]
       },
       options: {
@@ -2042,11 +2052,20 @@ demo = {
     gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
     gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
     gradientFill.addColorStop(1, hexToRGB('#18ce0f', 0.4));
+    
+    var dateList = localStorage.getItem('dateList');
+    var dateAry = dateList.split(',');
+    //console.log(dateAry);
+
+    var balanceList = localStorage.getItem('balanceList');
+    var balanceAry = balanceList.split(',');
+    //console.log(balanceAry);
 
     myChart = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: ["06/12", "06/13", "06/14", "06/15", "06/16", "06/17", "06/18"],
+        //labels: ["06/12", "06/13", "06/14", "06/15", "06/16", "06/17", "06/18"],
+        labels: dateAry,        
         datasets: [{
           label: "Email Stats",
           borderColor: "#ef8156",
@@ -2055,7 +2074,8 @@ demo = {
           fill: false,
           backgroundColor: gradientFill,
           borderWidth: 3,
-          data: [598.61, 599.45, 602.97, 605.33, 606.53, 607.93, 607.88]
+          //data: [598.61, 599.45, 602.97, 605.33, 606.53, 607.93, 607.88]
+          data: balanceAry
         }]
       },
       options: {
@@ -2112,11 +2132,20 @@ demo = {
     gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
     gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
     gradientFill.addColorStop(1, hexToRGB('#2CA8FF', 0.4));
+    
+    var dateList = localStorage.getItem('dateList');
+    var dateAry = dateList.split(',');
+    //console.log(dateAry);
+
+    var profitList = localStorage.getItem('profitList');
+    var profitAry = profitList.split(',');
+    //console.log(profitAry);
 
     var a = {
       type: "line",
       data: {
-        labels: ["06/12", "06/13", "06/14", "06/15", "06/16", "06/17", "06/18"],
+        //labels: ["06/12", "06/13", "06/14", "06/15", "06/16", "06/17", "06/18"],
+        labels: dateAry,
         datasets: [{
           label: "Active Countries",
           backgroundColor: gradientFill,
@@ -2125,7 +2154,8 @@ demo = {
           pointRadius: 0,
           fill: false,
           borderWidth: 3,
-          data: [-1.39, -0.55, 2.97, 5.33, 6.53, 7.93, 7.88]
+          //data: [-1.39, -0.55, 2.97, 5.33, 6.53, 7.93, 7.88]
+          data: profitAry
         }]
       },
       options: {
