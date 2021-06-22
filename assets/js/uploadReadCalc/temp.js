@@ -78,7 +78,7 @@ function processFile(lineTxt, filaName) {
     }
 
     //這邊要算出當前為止的勝率，統計當前為止的餘額，統計當前為止的獲利
-    calcAll(fileDate);
+    calcAll(false, fileDate);
 
 }
 
@@ -173,9 +173,9 @@ function buildOrderObj(orderInfoAry) {
     var balance;
 
     orderInfoAry.forEach(element => {
-        if(element.includes("餘額: ")){
+        if (element.includes("餘額: ")) {
             balance = element.replace("餘額: ", "");
-        }        
+        }
     });
 
     var orderObj = {
@@ -318,7 +318,7 @@ function buildProfitObj(elementStart, elementEnd) {
 
 
 //算出所有當前指標
-function calcAll(fileDate) {
+function calcAll(isFinish, fileDate) {
     if (orderObjAry.length != 0) {
         orderObjAryAll.push(orderObjAry);
         orderObjAry = [];
@@ -388,14 +388,7 @@ function calcAll(fileDate) {
     console.log(lastOrderObj);
 
     //
-    addLocalStorage('dateList', fileDate);
-    addLocalStorage('profitList', profitAll);
-    addLocalStorage('winRateList', winRate);
-    addLocalStorage('balanceList', lastOrderObj.balance);
-
-    //localStorage.setItem('startBuyCount', startBuyCount);
-    //fileDate
-    /* 
+    if(isFinish){
         localStorage.setItem('startBuyCount', startBuyCount);
         localStorage.setItem('startSellCount', startSellCount);
         localStorage.setItem('profitAll', profitAll);
@@ -404,20 +397,23 @@ function calcAll(fileDate) {
         localStorage.setItem('maxProfit', maxProfit);
         localStorage.setItem('minProfit', minProfit);
         localStorage.setItem('profitObjAryAll', JSON.stringify(profitObjAryAll));
-    */
-    //reset
-    //orderObjAryAll = [];
-    profitObjAryAll = [];
+    }else{
+        addLocalStorage('dateList', fileDate);
+        addLocalStorage('profitList', profitAll);
+        addLocalStorage('winRateList', winRate);
+        addLocalStorage('balanceList', lastOrderObj.balance);
+    }
 
+    profitObjAryAll = [];
 }
 
 
 
 function addLocalStorage(ItemKey, thisValue) {
     var list = localStorage.getItem(ItemKey);
-    if(list == null){
+    if (list == null) {
         localStorage.setItem(ItemKey, thisValue);
-    }else{
+    } else {
         var addDot = list + ',' + thisValue;
         localStorage.setItem(ItemKey, addDot);
     }

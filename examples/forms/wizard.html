@@ -331,6 +331,8 @@ Coded by www.creative-tim.com
               </button>
             </div>
             <a class="navbar-brand" href="javascript:;">Paper Dashboard 2 PRO</a>
+
+            
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
             aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
@@ -341,6 +343,8 @@ Coded by www.creative-tim.com
           <div class="collapse navbar-collapse justify-content-end" id="navigation">
             <form>
               <div class="input-group no-border">
+                <input type='button' style="margin-right: 50px;" class='btn btn-danger btn-fill btn-rose btn-wd' id="clear" name='clear'
+                    value='Clear' />
                 <input type="text" value="" class="form-control" placeholder="Search...">
                 <div class="input-group-append">
                   <div class="input-group-text">
@@ -396,7 +400,7 @@ Coded by www.creative-tim.com
                 <h3 class="card-title">
                   Build Your Profile
                 </h3>
-                <h5 class="description">This information will let us know more about you.</h5>
+                <h5 class="description">上傳Log檔，並解析出指標與圖表.</h5>
                 <div class="wizard-navigation">
                   <ul>
                     <!--<li class="nav-item">
@@ -409,7 +413,7 @@ Coded by www.creative-tim.com
                       <a class="nav-link" href="#account" data-toggle="tab" role="tab" aria-controls="account"
                         aria-selected="true">
                         <i class="nc-icon nc-touch-id"></i>
-                        Account
+                        上傳檔案
                       </a>
                     </li>
                   </ul>
@@ -456,14 +460,13 @@ Coded by www.creative-tim.com
                     </div>
                     -->
                   <div class="tab-pane show active" id="account">
-                    <h5 class="info-text"> What are you doing? (checkboxes) </h5>
+                    <h5 class="info-text"> 請選擇Log檔 (照順序) </h5>
                     <div class="row justify-content-center">
 
                       <input type="file" id="files" name="files" multiple>
-                      <button id=upload>Upload</button>
-                      <button id=show>Show</button>
-                      <button id=clear>clear</button>
-                      
+                      <!-- <button id=show>Show</button>
+                      <button id=clear>clear</button>-->
+
                       <div class="col-lg-10">
                         <div class="row">
                           <div class="col-sm-4">
@@ -502,7 +505,8 @@ Coded by www.creative-tim.com
               <div class="card-footer">
                 <div class="pull-right">
                   <input type='button' class='btn btn-next btn-fill btn-rose btn-wd' name='next' value='Next' />
-                  <input type='button' class='btn btn-finish btn-fill btn-rose btn-wd' name='finish' value='Finish' />
+                  <input type='button' class='btn btn-finish btn-fill btn-rose btn-wd' id="finish" name='finish'
+                    value='Finish' />
                 </div>
                 <div class="pull-left">
                   <input type='button' class='btn btn-previous btn-fill btn-default btn-wd' name='previous'
@@ -581,6 +585,7 @@ Coded by www.creative-tim.com
   <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
   <script src="../../assets/demo/demo.js"></script>
   <script src="../../assets/js/uploadReadCalc/temp.js"></script>
+  <script src="../../assets/js/common.js"></script>
 
   <script>
     $(document).ready(function () {
@@ -594,94 +599,13 @@ Coded by www.creative-tim.com
 
 
     var fileInput = $('#files');
-    var uploadButton = $('#upload');
-    var showButton = $('#show');
-    var clearButton = $('#clear');
+    var finishButton = $('#finish');
 
-    clearButton.on('click', function () {
-      localStorage.clear();
-    });
+    finishButton.on('click', function () {
 
-    showButton.on('click', function () {
-      if (orderObjAry.length != 0) {
-        orderObjAryAll.push(orderObjAry);
-        orderObjAry = [];
-      }
+      calcAll(true, '');
 
-
-      var openList = [];
-      orderObjAryAll.forEach(element => {
-
-        element.forEach(e1 => {
-          console.log(e1);
-        });
-        var tempAry = calc(openList, element);
-        openList = tempAry[0];
-        var profitObjAry = tempAry[1];
-
-        profitObjAry.forEach(profitObj => {
-          if (profitObj != null) {
-            profitObjAryAll.push(profitObj);
-          }
-        });
-      });
-
-
-      //
-      console.log("========================");
-      var posCount = 0;
-      var nagCount = 0;
-      var startBuyCount = 0;//以買單開倉數量
-      var startSellCount = 0;//以賣單開倉數量
-      var profitAll = 0;//總獲利
-      var profitExpectAll = 0;//總獲利預期
-      profitObjAryAll.forEach(profitObj => {
-
-        profitAll += profitObj.profit;
-        profitExpectAll += profitObj.profitExpect;
-
-        if (profitObj.profit > 0) {
-          posCount++;
-        } else {
-          nagCount++;
-        }
-
-        if (profitObj.buySellStart == "BUY") {
-          startBuyCount++;
-        } else if (profitObj.buySellStart == "SELL") {
-          startSellCount++;
-        }
-
-
-        console.log(profitObj);
-      });
-
-      var winRate = posCount / (posCount + nagCount);//勝率        
-      var maxProfit = Math.max.apply(Math, profitObjAryAll.map(function (o) { return o.profit; }));//最大獲利
-      var minProfit = Math.min.apply(Math, profitObjAryAll.map(function (o) { return o.profit; }));//最小獲利(包含虧損)
-
-      console.log("以買單開倉數量:" + startBuyCount);
-      console.log("以賣單開倉數量:" + startSellCount);
-
-      console.log("總獲利:" + profitAll);
-      console.log("總獲利預期:" + profitExpectAll);
-
-      console.log("勝率:" + winRate);
-      console.log("最大獲利:" + maxProfit);
-      console.log("最小獲利(包含虧損):" + minProfit);
-
-      localStorage.setItem('startBuyCount', startBuyCount);
-      localStorage.setItem('startSellCount', startSellCount);
-      localStorage.setItem('profitAll', profitAll);
-      localStorage.setItem('profitExpectAll', profitExpectAll);
-      localStorage.setItem('winRate', winRate);
-      localStorage.setItem('maxProfit', maxProfit);
-      localStorage.setItem('minProfit', minProfit);
-      localStorage.setItem('profitObjAryAll', JSON.stringify(profitObjAryAll));
-
-      //reset
-      //orderObjAryAll = [];
-      profitObjAryAll = [];
+      window.location.href = '../dashboard.html';
     });
 
 
