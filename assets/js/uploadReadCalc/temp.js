@@ -401,7 +401,11 @@ function calcAll(isFinish, fileDate) {
         addLocalStorage('dateList', fileDate);
         addLocalStorage('profitList', profitAll);
         addLocalStorage('winRateList', winRate);
-        addLocalStorage('balanceList', lastOrderObj.balance);
+        if(lastOrderObj == null){
+            addLocalStorage('balanceList', null);
+        }else{
+            addLocalStorage('balanceList', lastOrderObj.balance);
+        }        
     }
 
     profitObjAryAll = [];
