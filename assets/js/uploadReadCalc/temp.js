@@ -341,6 +341,53 @@ function calcAll(isFinish, fileDate) {
         });
     });
 
+
+    //計算滑價率 & 下單時間差異
+    
+    var slipAry = [];
+    var dtDifAry = [];
+    orderObjAryAll.forEach(orderObjAry => {
+
+        orderObjAry.forEach(element => {
+            //slipPoint 代表滑了多少點，若是負值則代表無滑價甚至買到更划算的價格
+            if(element.side == "BUY"){
+                var slipPoint = element.avgPrice - element.priceExpect;            
+                slipAry.push(slipPoint);
+            }else{
+                var slipPoint = element.priceExpect - element.avgPrice;
+                slipAry.push(slipPoint);
+            }
+            //計算時間差異
+            var dtEx = Date.parse(element.dtExpect);
+            var dtBa = Date.parse(element.dtBack);
+            var dtDif = dtBa - dtEx;           
+            dtDifAry.push(dtDif);
+
+
+        });
+        
+    });
+    
+
+    var maxSlip = Math.max.apply(Math, slipAry);
+    var minSlip = Math.min.apply(Math, slipAry);
+    const sumSlip = slipAry.reduce((a, b) => a + b, 0);
+    const avgSlip = (sumSlip / slipAry.length) || 0;
+    console.log("maxSlip : "+ maxSlip);
+    console.log("minSlip : "+ maxSlip);
+    console.log("sumSlip : "+ sumSlip);
+    console.log("avgSlip : "+ avgSlip);
+    
+    var maxDtDif = Math.max.apply(Math, dtDifAry);
+    var minDtDif = Math.min.apply(Math, dtDifAry);
+    const sumDtDif = dtDifAry.reduce((a, b) => a + b, 0);
+    const avgDtDif = (sumDtDif / dtDifAry.length) || 0;
+    console.log("maxDtDif : "+ maxDtDif);
+    console.log("minDtDif : "+ minDtDif);
+    console.log("sumDtDif : "+ sumDtDif);
+    console.log("avgDtDif : "+ avgDtDif);
+    
+
     //
     console.log("========================");
     var posCount = 0;
@@ -397,6 +444,18 @@ function calcAll(isFinish, fileDate) {
         localStorage.setItem('maxProfit', maxProfit);
         localStorage.setItem('minProfit', minProfit);
         localStorage.setItem('profitObjAryAll', JSON.stringify(profitObjAryAll));
+
+        localStorage.setItem('maxSlip', maxSlip);
+        localStorage.setItem('minSlip', minSlip);
+        localStorage.setItem('sumSlip', sumSlip);
+        localStorage.setItem('avgSlip', avgSlip);
+
+        localStorage.setItem('maxDtDif', maxDtDif);
+        localStorage.setItem('minDtDif', minDtDif);
+        localStorage.setItem('sumDtDif', sumDtDif);
+        localStorage.setItem('avgDtDif', avgDtDif);
+        
+        
     }else{
         addLocalStorage('dateList', fileDate);
         addLocalStorage('profitList', profitAll);
